@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,6 +46,7 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             background: white;
             margin-bottom: 2rem;
+            position: relative;
         }
         
         .product-card:hover {
@@ -56,7 +56,7 @@
         
         .product-img {
             width: 100%;
-            height: 200px;
+            height: 250px; /* Increased height */
             object-fit: cover;
             border-bottom: 3px solid var(--accent-color);
         }
@@ -66,6 +66,18 @@
             color: var(--dark-color);
             font-size: 1.2rem;
             margin: 1rem 0;
+        }
+        
+        .stock-status {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
         }
         
         .buy-btn {
@@ -142,6 +154,7 @@
                 <div class="product-card p-3">
                     <img src="product1.jpg" alt="Product 1" class="product-img">
                     <h5 class="product-name">Product-1</h5>
+                    <div class="stock-status">In stock</div>
                     <button class="buy-btn" onclick="buyProduct('Product-1')">
                         <i class="fab fa-whatsapp"></i> Buy Now
                     </button>
@@ -153,6 +166,7 @@
                 <div class="product-card p-3">
                     <img src="product2.jpg" alt="Product 2" class="product-img">
                     <h5 class="product-name">Product-2</h5>
+                    <div class="stock-status">In stock</div>
                     <button class="buy-btn" onclick="buyProduct('Product-2')">
                         <i class="fab fa-whatsapp"></i> Buy Now
                     </button>
@@ -164,6 +178,7 @@
                 <div class="product-card p-3">
                     <img src="product3.jpg" alt="Product 3" class="product-img">
                     <h5 class="product-name">Product-3</h5>
+                    <div class="stock-status">In stock</div>
                     <button class="buy-btn" onclick="buyProduct('Product-3')">
                         <i class="fab fa-whatsapp"></i> Buy Now
                     </button>
@@ -175,6 +190,7 @@
                 <div class="product-card p-3">
                     <img src="product4.jpg" alt="Product 4" class="product-img">
                     <h5 class="product-name">Product-4</h5>
+                    <div class="stock-status">In stock</div>
                     <button class="buy-btn" onclick="buyProduct('Product-4')">
                         <i class="fab fa-whatsapp"></i> Buy Now
                     </button>
@@ -186,6 +202,7 @@
                 <div class="product-card p-3">
                     <img src="product5.jpg" alt="Product 5" class="product-img">
                     <h5 class="product-name">Product-5</h5>
+                    <div class="stock-status">In stock</div>
                     <button class="buy-btn" onclick="buyProduct('Product-5')">
                         <i class="fab fa-whatsapp"></i> Buy Now
                     </button>
@@ -197,6 +214,7 @@
                 <div class="product-card p-3">
                     <img src="product6.jpg" alt="Product 6" class="product-img">
                     <h5 class="product-name">Product-6</h5>
+                    <div class="stock-status">In stock</div>
                     <button class="buy-btn" onclick="buyProduct('Product-6')">
                         <i class="fab fa-whatsapp"></i> Buy Now
                     </button>
