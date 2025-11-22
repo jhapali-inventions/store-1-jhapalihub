@@ -47,6 +47,9 @@
             background: white;
             margin-bottom: 2rem;
             position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
         .product-card:hover {
@@ -56,7 +59,7 @@
         
         .product-img {
             width: 100%;
-            height: 250px; /* Increased height */
+            height: 250px;
             object-fit: cover;
             border-bottom: 3px solid var(--accent-color);
         }
@@ -65,12 +68,26 @@
             font-weight: 600;
             color: var(--dark-color);
             font-size: 1.2rem;
-            margin: 1rem 0;
+            margin: 1rem 0 0.5rem;
+        }
+        
+        .product-price {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
         }
         
         .stock-status {
             position: absolute;
-            bottom: 15px;
+            top: 15px;
             right: 15px;
             background-color: var(--accent-color);
             color: white;
@@ -88,7 +105,8 @@
             border-radius: 25px;
             transition: all 0.3s ease;
             font-weight: 600;
-            margin: 1rem 0;
+            margin-top: auto;
+            width: 100%;
         }
         
         .buy-btn:hover {
@@ -128,12 +146,30 @@
         .facebook { background: linear-gradient(45deg, #3b5998, #4a69a8); }
         .whatsapp { background: linear-gradient(45deg, #25d366, #128c7e); }
         
-        .footer-links {
+        .footer {
             background: white;
-            padding: 1rem;
+            padding: 2rem 0;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             margin-top: 2rem;
+        }
+        
+        .footer h5 {
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+        
+        .footer p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -150,78 +186,118 @@
     <main class="container">
         <div class="row">
             <!-- Product 1 -->
-            <div class="col-md-6 mb-4">
+            <div class="col-md-6 col-lg-4 mb-4">
                 <div class="product-card p-3">
-                    <img src="product1.jpg" alt="Product 1" class="product-img">
+                    <img src="https://via.placeholder.com/300x250?text=Hair+Clips" alt="Hair Clips" class="product-img">
                     <h5 class="product-name">Hair Clips</h5>
+                    <div class="product-price">Nrs. 150</div>
+                    <p class="product-description">Beautiful and durable hair clips that add style to your look. Available in multiple colors.</p>
                     <div class="stock-status">In stock</div>
-                    <button class="buy-btn" onclick="buyProduct('Product-1')">
+                    <button class="buy-btn" onclick="buyProduct('Hair Clips', 150, 'Beautiful and durable hair clips that add style to your look. Available in multiple colors.')">
                         <i class="fab fa-whatsapp"></i> Buy Now
                     </button>
                 </div>
             </div>
             
             <!-- Product 2 -->
-            <div class="col-md-6 mb-4">
+            <div class="col-md-6 col-lg-4 mb-4">
                 <div class="product-card p-3">
-                    <img src="product2.jpg" alt="Product 2" class="product-img">
+                    <img src="https://via.placeholder.com/300x250?text=Hair+Bands" alt="Hair Bands" class="product-img">
                     <h5 class="product-name">Hair Bands</h5>
+                    <div class="product-price">Nrs. 200</div>
+                    <p class="product-description">Comfortable and stylish hair bands perfect for any occasion. Stretchy material for perfect fit.</p>
                     <div class="stock-status">In stock</div>
-                    <button class="buy-btn" onclick="buyProduct('Product-2')">
+                    <button class="buy-btn" onclick="buyProduct('Hair Bands', 200, 'Comfortable and stylish hair bands perfect for any occasion. Stretchy material for perfect fit.')">
                         <i class="fab fa-whatsapp"></i> Buy Now
                     </button>
                 </div>
             </div>
             
             <!-- Product 3 -->
-            <div class="col-md-6 mb-4">
+            <div class="col-md-6 col-lg-4 mb-4">
                 <div class="product-card p-3">
-                    <img src="product3.jpg" alt="Product 3" class="product-img">
-                    <h5 class="product-name">Rose lips oil</h5>
+                    <img src="https://via.placeholder.com/300x250?text=Rose+Lips+Oil" alt="Rose Lips Oil" class="product-img">
+                    <h5 class="product-name">Rose Lips Oil</h5>
+                    <div class="product-price">Nrs. 350</div>
+                    <p class="product-description">Nourishing rose oil for soft and hydrated lips. Natural ingredients, perfect for daily use.</p>
                     <div class="stock-status">In stock</div>
-                    <button class="buy-btn" onclick="buyProduct('Product-3')">
+                    <button class="buy-btn" onclick="buyProduct('Rose Lips Oil', 350, 'Nourishing rose oil for soft and hydrated lips. Natural ingredients, perfect for daily use.')">
                         <i class="fab fa-whatsapp"></i> Buy Now
                     </button>
                 </div>
             </div>
             
             <!-- Product 4 -->
-            <div class="col-md-6 mb-4">
+            <div class="col-md-6 col-lg-4 mb-4">
                 <div class="product-card p-3">
-                    <img src="product4.jpg" alt="Product 4" class="product-img">
+                    <img src="https://via.placeholder.com/300x250?text=Clips+Clutcher" alt="Clips Clutcher" class="product-img">
                     <h5 class="product-name">Clips Clutcher</h5>
+                    <div class="product-price">Nrs. 180</div>
+                    <p class="product-description">Versatile hair accessory that holds your hair securely while looking fashionable.</p>
                     <div class="stock-status">In stock</div>
-                    <button class="buy-btn" onclick="buyProduct('Product-4')">
+                    <button class="buy-btn" onclick="buyProduct('Clips Clutcher', 180, 'Versatile hair accessory that holds your hair securely while looking fashionable.')">
                         <i class="fab fa-whatsapp"></i> Buy Now
                     </button>
                 </div>
             </div>
             
             <!-- Product 5 -->
-            <div class="col-md-6 mb-4">
+            <div class="col-md-6 col-lg-4 mb-4">
                 <div class="product-card p-3">
-                    <img src="product5.jpg" alt="Product 5" class="product-img">
-                    <h5 class="product-name">Product-5</h5>
+                    <img src="https://via.placeholder.com/300x250?text=Product+5" alt="Product 5" class="product-img">
+                    <h5 class="product-name">Elegant Earrings</h5>
+                    <div class="product-price">Nrs. 450</div>
+                    <p class="product-description">Beautifully crafted earrings that add elegance to any outfit. Hypoallergenic materials.</p>
                     <div class="stock-status">In stock</div>
-                    <button class="buy-btn" onclick="buyProduct('Product-5')">
+                    <button class="buy-btn" onclick="buyProduct('Elegant Earrings', 450, 'Beautifully crafted earrings that add elegance to any outfit. Hypoallergenic materials.')">
                         <i class="fab fa-whatsapp"></i> Buy Now
                     </button>
                 </div>
             </div>
             
             <!-- Product 6 -->
-            <div class="col-md-6 mb-4">
+            <div class="col-md-6 col-lg-4 mb-4">
                 <div class="product-card p-3">
-                    <img src="product6.jpg" alt="Product 6" class="product-img">
-                    <h5 class="product-name">Product-6</h5>
+                    <img src="https://via.placeholder.com/300x250?text=Product+6" alt="Product 6" class="product-img">
+                    <h5 class="product-name">Silk Scarf</h5>
+                    <div class="product-price">Nrs. 600</div>
+                    <p class="product-description">Luxurious silk scarf with vibrant patterns. Perfect accessory for hair, neck, or handbag.</p>
                     <div class="stock-status">In stock</div>
-                    <button class="buy-btn" onclick="buyProduct('Product-6')">
+                    <button class="buy-btn" onclick="buyProduct('Silk Scarf', 600, 'Luxurious silk scarf with vibrant patterns. Perfect accessory for hair, neck, or handbag.')">
                         <i class="fab fa-whatsapp"></i> Buy Now
                     </button>
                 </div>
             </div>
         </div>
     </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>About Jhapali Hub</h5>
+                    <p>Your one-stop shop for quality products at affordable prices. We're committed to bringing you the best shopping experience.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact Information</h5>
+                    <p><i class="fas fa-phone"></i> Phone: +977 9860934654</p>
+                    <p><i class="fas fa-envelope"></i> Email: info@jhapalihub.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Location: Jhapa, Nepal</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <p><a href="#">Home</a></p>
+                    <p><a href="#">Products</a></p>
+                    <p><a href="#">About Us</a></p>
+                    <p><a href="#">Contact</a></p>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p>&copy; 2023 Jhapali Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Social Media Links (Fixed to bottom right) -->
     <div class="social-section">
@@ -246,8 +322,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        function buyProduct(productName) {
-            const message = `Hello! I'm interested in ${productName}. Can you help me please?`;
+        function buyProduct(productName, price, description) {
+            const message = `Hello! I'm interested in purchasing the following product:
+            
+Product: ${productName}
+Price: Nrs. ${price}
+Description: ${description}
+
+Can you provide more details and help me with the purchase?`;
+            
             const phoneNumber = '9779860934654';
             const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
