@@ -50,6 +50,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
+            cursor: pointer;
         }
         
         .product-card:hover {
@@ -62,6 +63,10 @@
             overflow: hidden;
             position: relative;
             border-bottom: 3px solid var(--accent-color);
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .product-img {
@@ -69,6 +74,7 @@
             height: auto;
             object-fit: cover;
             transition: transform 0.3s ease;
+            background-color: #f8f9fa;
         }
         
         /* Responsive image heights */
@@ -201,14 +207,85 @@
         .footer a:hover {
             text-decoration: underline;
         }
+        
+        /* Cart Styles */
+        #cartButton {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        #cartButton:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1055;
+        }
+        
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            display: none;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Image placeholder styling */
+        .product-img:before {
+            content: "Image Coming Soon";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #6c757d;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
     <!-- Header -->
     <header class="header text-center">
         <div class="container">
             <h1>🛍️ Jhapali Hub</h1>
             <p class="lead">Your one-stop shop for amazing products!</p>
+            <button id="cartButton" class="btn btn-light position-relative">
+                <i class="fas fa-shopping-cart"></i> Cart
+                <span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+            </button>
         </div>
     </header>
 
@@ -217,96 +294,96 @@
         <div class="row">
             <!-- Product 1 -->
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="product-card p-3">
+                <div class="product-card p-3" data-category="hair" onclick="showProductDetails('Hair Clips', 49, 'Beautiful and durable hair clips that add style to your look. Available in multiple colors.', 'product1.jpg')">
                     <div class="product-img-container">
-                        <img src="product1.jpg" alt="Hair Clips" class="product-img">
+                        <img src="product1.jpg" alt="Hair Clips" class="product-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0jOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zNWVtIj5IYWlyIENsaXBzPC90ZXh0Pjwvc3ZnPg=='">
                     </div>
                     <h5 class="product-name">Hair Clips</h5>
                     <div class="product-price">Nrs.49</div>
                     <p class="product-description">Beautiful and durable hair clips that add style to your look. Available in multiple colors.</p>
                     <div class="stock-status">In stock</div>
-                    <button class="buy-btn" onclick="buyProduct('Hair Clips', 49, 'Beautiful and durable hair clips that add style to your look. Available in multiple colors.')">
-                        <i class="fab fa-whatsapp"></i> Buy Now
+                    <button class="buy-btn" onclick="event.stopPropagation(); addToCart('Hair Clips', 49, 'Beautiful and durable hair clips that add style to your look. Available in multiple colors.')">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
                     </button>
                 </div>
             </div>
             
             <!-- Product 2 -->
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="product-card p-3">
+                <div class="product-card p-3" data-category="hair" onclick="showProductDetails('Hair Bands', 49, 'Comfortable and stylish hair bands perfect for any occasion. Stretchy material for perfect fit.', 'product2.jpg')">
                     <div class="product-img-container">
-                        <img src="product2.jpg" alt="Hair Bands" class="product-img">
+                        <img src="product2.jpg" alt="Hair Bands" class="product-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0jOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zNWVtIj5IYWlyIEJhbmRzPC90ZXh0Pjwvc3ZnPg=='">
                     </div>
                     <h5 class="product-name">Hair Bands</h5>
                     <div class="product-price">Nrs. 49</div>
                     <p class="product-description">Comfortable and stylish hair bands perfect for any occasion. Stretchy material for perfect fit.</p>
                     <div class="stock-status">In stock</div>
-                    <button class="buy-btn" onclick="buyProduct('Hair Bands', 49, 'Comfortable and stylish hair bands perfect for any occasion. Stretchy material for perfect fit.')">
-                        <i class="fab fa-whatsapp"></i> Buy Now
+                    <button class="buy-btn" onclick="event.stopPropagation(); addToCart('Hair Bands', 49, 'Comfortable and stylish hair bands perfect for any occasion. Stretchy material for perfect fit.')">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
                     </button>
                 </div>
             </div>
             
             <!-- Product 3 -->
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="product-card p-3">
+                <div class="product-card p-3" data-category="beauty" onclick="showProductDetails('Rose Lips Oil', 299, 'Nourishing rose oil for soft and hydrated lips. Natural ingredients, perfect for daily use.', 'product3.jpg')">
                     <div class="product-img-container">
-                        <img src="product3.jpg" alt="Rose Lips Oil" class="product-img">
+                        <img src="product3.jpg" alt="Rose Lips Oil" class="product-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0jOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zNWVtIj5Sb3NlIExpcHMgT2lsPC90ZXh0Pjwvc3ZnPg=='">
                     </div>
                     <h5 class="product-name">Rose Lips Oil</h5>
                     <div class="product-price">Nrs. 299</div>
                     <p class="product-description">Nourishing rose oil for soft and hydrated lips. Natural ingredients, perfect for daily use.</p>
                     <div class="stock-status">In stock</div>
-                    <button class="buy-btn" onclick="buyProduct('Rose Lips Oil', 299, 'Nourishing rose oil for soft and hydrated lips. Natural ingredients, perfect for daily use.')">
-                        <i class="fab fa-whatsapp"></i> Buy Now
+                    <button class="buy-btn" onclick="event.stopPropagation(); addToCart('Rose Lips Oil', 299, 'Nourishing rose oil for soft and hydrated lips. Natural ingredients, perfect for daily use.')">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
                     </button>
                 </div>
             </div>
             
             <!-- Product 4 -->
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="product-card p-3">
+                <div class="product-card p-3" data-category="hair" onclick="showProductDetails('Clips Clutcher', 59, 'Versatile hair accessory that holds your hair securely while looking fashionable.', 'product4.jpg')">
                     <div class="product-img-container">
-                        <img src="product4.jpg" alt="Clips Clutcher" class="product-img">
+                        <img src="product4.jpg" alt="Clips Clutcher" class="product-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0jOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zNWVtIj5DbGlwcyBDbHV0Y2hlcjwvdGV4dD48L3N2Zz4='">
                     </div>
                     <h5 class="product-name">Clips Clutcher</h5>
                     <div class="product-price">Nrs. 59</div>
                     <p class="product-description">Versatile hair accessory that holds your hair securely while looking fashionable.</p>
                     <div class="stock-status">In stock</div>
-                    <button class="buy-btn" onclick="buyProduct('Clips Clutcher', 59, 'Versatile hair accessory that holds your hair securely while looking fashionable.')">
-                        <i class="fab fa-whatsapp"></i> Buy Now
+                    <button class="buy-btn" onclick="event.stopPropagation(); addToCart('Clips Clutcher', 59, 'Versatile hair accessory that holds your hair securely while looking fashionable.')">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
                     </button>
                 </div>
             </div>
             
             <!-- Product 5 -->
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="product-card p-3">
+                <div class="product-card p-3" data-category="jewelry" onclick="showProductDetails('Elegant Earrings', 450, 'Beautifully crafted earrings that add elegance to any outfit. Hypoallergenic materials.', 'product5.jpg')">
                     <div class="product-img-container">
-                        <img src="product5.jpg" alt="Elegant Earrings" class="product-img">
+                        <img src="product5.jpg" alt="Elegant Earrings" class="product-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0jOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zNWVtIj5FYXJyaW5nczwvdGV4dD48L3N2Zz4='">
                     </div>
                     <h5 class="product-name">Elegant Earrings</h5>
                     <div class="product-price">Nrs. 450</div>
                     <p class="product-description">Beautifully crafted earrings that add elegance to any outfit. Hypoallergenic materials.</p>
                     <div class="stock-status">In stock</div>
-                    <button class="buy-btn" onclick="buyProduct('Elegant Earrings', 450, 'Beautifully crafted earrings that add elegance to any outfit. Hypoallergenic materials.')">
-                        <i class="fab fa-whatsapp"></i> Buy Now
+                    <button class="buy-btn" onclick="event.stopPropagation(); addToCart('Elegant Earrings', 450, 'Beautifully crafted earrings that add elegance to any outfit. Hypoallergenic materials.')">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
                     </button>
                 </div>
             </div>
             
             <!-- Product 6 -->
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="product-card p-3">
+                <div class="product-card p-3" data-category="accessories" onclick="showProductDetails('Silk Scarf', 600, 'Luxurious silk scarf with vibrant patterns. Perfect accessory for hair, neck, or handbag.', 'product6.jpg')">
                     <div class="product-img-container">
-                        <img src="product6.jpg" alt="Silk Scarf" class="product-img">
+                        <img src="product6.jpg" alt="Silk Scarf" class="product-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0jOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zNWVtIj5TY2FyZjwvdGV4dD48L3N2Zz4='">
                     </div>
                     <h5 class="product-name">Silk Scarf</h5>
                     <div class="product-price">Nrs. 600</div>
                     <p class="product-description">Luxurious silk scarf with vibrant patterns. Perfect accessory for hair, neck, or handbag.</p>
                     <div class="stock-status">In stock</div>
-                    <button class="buy-btn" onclick="buyProduct('Silk Scarf', 600, 'Luxurious silk scarf with vibrant patterns. Perfect accessory for hair, neck, or handbag.')">
-                        <i class="fab fa-whatsapp"></i> Buy Now
+                    <button class="buy-btn" onclick="event.stopPropagation(); addToCart('Silk Scarf', 600, 'Luxurious silk scarf with vibrant patterns. Perfect accessory for hair, neck, or handbag.')">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
                     </button>
                 </div>
             </div>
@@ -360,10 +437,284 @@
         </a>
     </div>
 
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Your Shopping Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cartItems"></div>
+                    <div class="d-flex justify-content-between mt-3">
+                        <strong>Total: Nrs. <span id="cartTotal">0</span></strong>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continue Shopping</button>
+                    <button type="button" class="btn btn-primary" onclick="checkout()">Checkout via WhatsApp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Details Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalTitle">Product Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="productModalImage" src="" alt="" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-6">
+                            <h4 id="productModalName"></h4>
+                            <h5 class="text-primary" id="productModalPrice"></h5>
+                            <p id="productModalDescription"></p>
+                            <div class="mb-3">
+                                <label for="quantity" class="form-label">Quantity:</label>
+                                <input type="number" id="quantity" class="form-control" value="1" min="1" max="10">
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" onclick="addToCartFromModal()">
+                                    <i class="fas fa-cart-plus"></i> Add to Cart
+                                </button>
+                                <button class="btn btn-success" onclick="buyNowFromModal()">
+                                    <i class="fab fa-whatsapp"></i> Buy Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
+        let cart = [];
+        
+        // Load cart from local storage on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCartFromStorage();
+        });
+        
+        // Load cart from local storage
+        function loadCartFromStorage() {
+            const savedCart = localStorage.getItem('jhapaliHubCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartDisplay();
+            }
+        }
+        
+        // Save cart to local storage
+        function saveCartToStorage() {
+            localStorage.setItem('jhapaliHubCart', JSON.stringify(cart));
+        }
+        
+        // Add to cart function
+        function addToCart(productName, price, description) {
+            const existingItem = cart.find(item => item.name === productName);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: productName,
+                    price: price,
+                    description: description,
+                    quantity: 1
+                });
+            }
+            
+            updateCartDisplay();
+            saveCartToStorage();
+            showNotification(`${productName} added to cart!`);
+        }
+        
+        // Update cart display
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Update cart items
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-center">Your cart is empty</p>';
+            } else {
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    
+                    cartItems.innerHTML += `
+                        <div class="d-flex justify-content-between align-items-center mb-2 p-2 border-bottom">
+                            <div>
+                                <h6 class="mb-0">${item.name}</h6>
+                                <small class="text-muted">Nrs. ${item.price} x ${item.quantity}</small>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="me-3">Nrs. ${itemTotal}</span>
+                                <button class="btn btn-sm btn-outline-danger" onclick="removeFromCart(${index})">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            
+            cartTotal.textContent = total;
+        }
+        
+        // Remove from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+            saveCartToStorage();
+        }
+        
+        // Checkout function
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!', 'warning');
+                return;
+            }
+            
+            showLoading();
+            
+            // Simulate processing delay
+            setTimeout(() => {
+                let message = `Hello! I'm interested in purchasing the following products:\n\n`;
+                
+                cart.forEach(item => {
+                    message += `Product: ${item.name}\n`;
+                    message += `Quantity: ${item.quantity}\n`;
+                    message += `Price: Nrs. ${item.price * item.quantity}\n`;
+                    message += `Description: ${item.description}\n\n`;
+                });
+                
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                message += `Total: Nrs. ${total}\n\n`;
+                message += `Can you provide more details and help me with the purchase?`;
+                
+                const phoneNumber = '9779860934654';
+                const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                window.open(url, '_blank');
+                
+                // Clear cart after checkout
+                cart = [];
+                updateCartDisplay();
+                saveCartToStorage();
+                $('#cartModal').modal('hide');
+                hideLoading();
+            }, 1000);
+        }
+        
+        // Show product details
+        function showProductDetails(productName, price, description, imageSrc) {
+            document.getElementById('productModalTitle').textContent = productName;
+            document.getElementById('productModalName').textContent = productName;
+            document.getElementById('productModalPrice').textContent = `Nrs. ${price}`;
+            document.getElementById('productModalDescription').textContent = description;
+            document.getElementById('productModalImage').src = imageSrc;
+            
+            const productModal = new bootstrap.Modal(document.getElementById('productModal'));
+            productModal.show();
+        }
+        
+        // Add to cart from modal
+        function addToCartFromModal() {
+            const productName = document.getElementById('productModalName').textContent;
+            const price = parseInt(document.getElementById('productModalPrice').textContent.replace('Nrs. ', ''));
+            const description = document.getElementById('productModalDescription').textContent;
+            const quantity = parseInt(document.getElementById('quantity').value);
+            
+            // Add multiple items to cart
+            for (let i = 0; i < quantity; i++) {
+                addToCart(productName, price, description);
+            }
+            
+            $('#productModal').modal('hide');
+        }
+        
+        // Buy now from modal
+        function buyNowFromModal() {
+            const productName = document.getElementById('productModalName').textContent;
+            const price = parseInt(document.getElementById('productModalPrice').textContent.replace('Nrs. ', ''));
+            const description = document.getElementById('productModalDescription').textContent;
+            const quantity = parseInt(document.getElementById('quantity').value);
+            
+            const message = `Hello! I'm interested in purchasing the following product:
+            
+Product: ${productName}
+Quantity: ${quantity}
+Price: Nrs. ${price * quantity}
+Description: ${description}
+
+Can you provide more details and help me with the purchase?`;
+            
+            const phoneNumber = '9779860934654';
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+            
+            $('#productModal').modal('hide');
+        }
+        
+        // Show notification
+        function showNotification(message, type = 'success') {
+            // Create toast notification
+            const toast = document.createElement('div');
+            toast.className = `toast align-items-center text-white bg-${type === 'success' ? 'success' : 'warning'} border-0`;
+            toast.setAttribute('role', 'alert');
+            toast.innerHTML = `
+                <div class="d-flex">
+                    <div class="toast-body">${message}</div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+            `;
+            
+            document.body.appendChild(toast);
+            const bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
+            
+            // Remove toast after it's hidden
+            toast.addEventListener('hidden.bs.toast', () => {
+                document.body.removeChild(toast);
+            });
+        }
+        
+        // Show loading
+        function showLoading() {
+            document.getElementById('loadingOverlay').style.display = 'flex';
+        }
+        
+        // Hide loading
+        function hideLoading() {
+            document.getElementById('loadingOverlay').style.display = 'none';
+        }
+        
+        // Initialize cart button
+        document.getElementById('cartButton').addEventListener('click', function() {
+            const cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
+            cartModal.show();
+        });
+        
+        // Original buyProduct function (for backward compatibility)
         function buyProduct(productName, price, description) {
             const message = `Hello! I'm interested in purchasing the following product:
             
