@@ -57,11 +57,41 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
         
+        .product-img-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            border-bottom: 3px solid var(--accent-color);
+        }
+        
         .product-img {
             width: 100%;
-            height: 250px;
+            height: auto;
             object-fit: cover;
-            border-bottom: 3px solid var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+        
+        /* Responsive image heights */
+        @media (min-width: 992px) {
+            .product-img {
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 991px) and (min-width: 576px) {
+            .product-img {
+                height: 220px;
+            }
+        }
+        
+        @media (max-width: 575px) {
+            .product-img {
+                height: 200px;
+            }
+        }
+        
+        .product-card:hover .product-img {
+            transform: scale(1.05);
         }
         
         .product-name {
@@ -188,7 +218,9 @@
             <!-- Product 1 -->
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="product-card p-3">
-                    <img src="product1.jpg" alt="Hair Clips" class="product-img">
+                    <div class="product-img-container">
+                        <img src="product1.jpg" alt="Hair Clips" class="product-img">
+                    </div>
                     <h5 class="product-name">Hair Clips</h5>
                     <div class="product-price">Nrs. 150</div>
                     <p class="product-description">Beautiful and durable hair clips that add style to your look. Available in multiple colors.</p>
@@ -202,7 +234,9 @@
             <!-- Product 2 -->
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="product-card p-3">
-                    <img src="product2.jpg" alt="Hair Bands" class="product-img">
+                    <div class="product-img-container">
+                        <img src="product2.jpg" alt="Hair Bands" class="product-img">
+                    </div>
                     <h5 class="product-name">Hair Bands</h5>
                     <div class="product-price">Nrs. 200</div>
                     <p class="product-description">Comfortable and stylish hair bands perfect for any occasion. Stretchy material for perfect fit.</p>
@@ -216,7 +250,9 @@
             <!-- Product 3 -->
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="product-card p-3">
-                    <img src="product3.jpg" alt="Rose Lips Oil" class="product-img">
+                    <div class="product-img-container">
+                        <img src="product3.jpg" alt="Rose Lips Oil" class="product-img">
+                    </div>
                     <h5 class="product-name">Rose Lips Oil</h5>
                     <div class="product-price">Nrs. 350</div>
                     <p class="product-description">Nourishing rose oil for soft and hydrated lips. Natural ingredients, perfect for daily use.</p>
@@ -230,7 +266,9 @@
             <!-- Product 4 -->
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="product-card p-3">
-                    <img src="product4.jpg" alt="Clips Clutcher" class="product-img">
+                    <div class="product-img-container">
+                        <img src="product4.jpg" alt="Clips Clutcher" class="product-img">
+                    </div>
                     <h5 class="product-name">Clips Clutcher</h5>
                     <div class="product-price">Nrs. 180</div>
                     <p class="product-description">Versatile hair accessory that holds your hair securely while looking fashionable.</p>
@@ -244,7 +282,9 @@
             <!-- Product 5 -->
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="product-card p-3">
-                    <img src="product5.jpg" alt="Elegant Earrings" class="product-img">
+                    <div class="product-img-container">
+                        <img src="product5.jpg" alt="Elegant Earrings" class="product-img">
+                    </div>
                     <h5 class="product-name">Elegant Earrings</h5>
                     <div class="product-price">Nrs. 450</div>
                     <p class="product-description">Beautifully crafted earrings that add elegance to any outfit. Hypoallergenic materials.</p>
@@ -258,7 +298,9 @@
             <!-- Product 6 -->
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="product-card p-3">
-                    <img src="product6.jpg" alt="Silk Scarf" class="product-img">
+                    <div class="product-img-container">
+                        <img src="product6.jpg" alt="Silk Scarf" class="product-img">
+                    </div>
                     <h5 class="product-name">Silk Scarf</h5>
                     <div class="product-price">Nrs. 600</div>
                     <p class="product-description">Luxurious silk scarf with vibrant patterns. Perfect accessory for hair, neck, or handbag.</p>
@@ -294,7 +336,7 @@
                 </div>
             </div>
             <div class="text-center mt-4">
-                <p>&copy; 2025 Jhapali Hub. All rights reserved.</p>
+                <p>&copy; 2023 Jhapali Hub. All rights reserved.</p>
             </div>
         </div>
     </footer>
