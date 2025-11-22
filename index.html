@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jhapali Hub</title>
+    <title>Jhapali Hub - Your One-Stop Shop</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -50,6 +50,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
+            cursor: pointer;
         }
         
         .product-card:hover {
@@ -62,12 +63,15 @@
             overflow: hidden;
             position: relative;
             border-bottom: 3px solid var(--accent-color);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .product-img {
             width: 100%;
             height: auto;
-            object-fit: cover;
             transition: transform 0.3s ease;
         }
         
@@ -137,6 +141,10 @@
             font-weight: 600;
             margin-top: auto;
             width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
         
         .buy-btn:hover {
@@ -164,6 +172,7 @@
             border: none;
             color: white;
             font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         
         .social-btn:hover {
@@ -201,13 +210,84 @@
         .footer a:hover {
             text-decoration: underline;
         }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1055;
+        }
+        
+        .modal-product-img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .product-features {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .product-features li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .product-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ddd;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .quantity-input {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-left: none;
+            border-right: none;
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header text-center">
         <div class="container">
-            <h1>??? Jhapali Hub</h1>
+            <h1>🛍️ Jhapali Hub</h1>
             <p class="lead">Your one-stop shop for amazing products!</p>
         </div>
     </header>
@@ -217,15 +297,16 @@
         <div class="row">
             <!-- Product 1 -->
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="product-card p-3">
+                <div class="product-card p-3" onclick="showProductDetails('hair-clips')">
                     <div class="product-img-container">
-                        <img src="product1.jpg" alt="Hair Clips" class="product-img">
+                        <img src="https://placehold.co/600x400/FF6B35/white?text=Hair+Clips" alt="Hair Clips" class="product-img">
                     </div>
+                    <div class="product-badge">BESTSELLER</div>
                     <h5 class="product-name">Hair Clips</h5>
-                    <div class="product-price">Nrs.49</div>
+                    <div class="product-price">Nrs. 49</div>
                     <p class="product-description">Beautiful and durable hair clips that add style to your look. Available in multiple colors.</p>
                     <div class="stock-status">In stock</div>
-                    <button class="buy-btn" onclick="buyProduct('Hair Clips', 49, 'Beautiful and durable hair clips that add style to your look. Available in multiple colors.')">
+                    <button class="buy-btn" onclick="event.stopPropagation(); buyProduct('Hair Clips', 49, 'Beautiful and durable hair clips that add style to your look. Available in multiple colors.')">
                         <i class="fab fa-whatsapp"></i> Buy Now
                     </button>
                 </div>
@@ -233,15 +314,15 @@
             
             <!-- Product 2 -->
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="product-card p-3">
+                <div class="product-card p-3" onclick="showProductDetails('hair-bands')">
                     <div class="product-img-container">
-                        <img src="product2.jpg" alt="Hair Bands" class="product-img">
+                        <img src="https://placehold.co/600x400/F4976C/white?text=Hair+Bands" alt="Hair Bands" class="product-img">
                     </div>
                     <h5 class="product-name">Hair Bands</h5>
                     <div class="product-price">Nrs. 49</div>
                     <p class="product-description">Comfortable and stylish hair bands perfect for any occasion. Stretchy material for perfect fit.</p>
                     <div class="stock-status">In stock</div>
-                    <button class="buy-btn" onclick="buyProduct('Hair Bands', 49, 'Comfortable and stylish hair bands perfect for any occasion. Stretchy material for perfect fit.')">
+                    <button class="buy-btn" onclick="event.stopPropagation(); buyProduct('Hair Bands', 49, 'Comfortable and stylish hair bands perfect for any occasion. Stretchy material for perfect fit.')">
                         <i class="fab fa-whatsapp"></i> Buy Now
                     </button>
                 </div>
@@ -249,15 +330,16 @@
             
             <!-- Product 3 -->
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="product-card p-3">
+                <div class="product-card p-3" onclick="showProductDetails('rose-lips-oil')">
                     <div class="product-img-container">
-                        <img src="product3.jpg" alt="Rose Lips Oil" class="product-img">
+                        <img src="https://placehold.co/600x400/4ECDC4/white?text=Rose+Lips+Oil" alt="Rose Lips Oil" class="product-img">
                     </div>
+                    <div class="product-badge">NEW</div>
                     <h5 class="product-name">Rose Lips Oil</h5>
                     <div class="product-price">Nrs. 299</div>
                     <p class="product-description">Nourishing rose oil for soft and hydrated lips. Natural ingredients, perfect for daily use.</p>
                     <div class="stock-status">In stock</div>
-                    <button class="buy-btn" onclick="buyProduct('Rose Lips Oil', 299, 'Nourishing rose oil for soft and hydrated lips. Natural ingredients, perfect for daily use.')">
+                    <button class="buy-btn" onclick="event.stopPropagation(); buyProduct('Rose Lips Oil', 299, 'Nourishing rose oil for soft and hydrated lips. Natural ingredients, perfect for daily use.')">
                         <i class="fab fa-whatsapp"></i> Buy Now
                     </button>
                 </div>
@@ -265,15 +347,15 @@
             
             <!-- Product 4 -->
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="product-card p-3">
+                <div class="product-card p-3" onclick="showProductDetails('clips-clutcher')">
                     <div class="product-img-container">
-                        <img src="product4.jpg" alt="Clips Clutcher" class="product-img">
+                        <img src="https://placehold.co/600x400/2A363B/white?text=Clips+Clutcher" alt="Clips Clutcher" class="product-img">
                     </div>
                     <h5 class="product-name">Clips Clutcher</h5>
                     <div class="product-price">Nrs. 59</div>
                     <p class="product-description">Versatile hair accessory that holds your hair securely while looking fashionable.</p>
                     <div class="stock-status">In stock</div>
-                    <button class="buy-btn" onclick="buyProduct('Clips Clutcher', 59, 'Versatile hair accessory that holds your hair securely while looking fashionable.')">
+                    <button class="buy-btn" onclick="event.stopPropagation(); buyProduct('Clips Clutcher', 59, 'Versatile hair accessory that holds your hair securely while looking fashionable.')">
                         <i class="fab fa-whatsapp"></i> Buy Now
                     </button>
                 </div>
@@ -281,15 +363,16 @@
             
             <!-- Product 5 -->
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="product-card p-3">
+                <div class="product-card p-3" onclick="showProductDetails('elegant-earrings')">
                     <div class="product-img-container">
-                        <img src="product5.jpg" alt="Elegant Earrings" class="product-img">
+                        <img src="https://placehold.co/600x400/FF6B35/white?text=Elegant+Earrings" alt="Elegant Earrings" class="product-img">
                     </div>
+                    <div class="product-badge">POPULAR</div>
                     <h5 class="product-name">Elegant Earrings</h5>
                     <div class="product-price">Nrs. 450</div>
                     <p class="product-description">Beautifully crafted earrings that add elegance to any outfit. Hypoallergenic materials.</p>
                     <div class="stock-status">In stock</div>
-                    <button class="buy-btn" onclick="buyProduct('Elegant Earrings', 450, 'Beautifully crafted earrings that add elegance to any outfit. Hypoallergenic materials.')">
+                    <button class="buy-btn" onclick="event.stopPropagation(); buyProduct('Elegant Earrings', 450, 'Beautifully crafted earrings that add elegance to any outfit. Hypoallergenic materials.')">
                         <i class="fab fa-whatsapp"></i> Buy Now
                     </button>
                 </div>
@@ -297,15 +380,15 @@
             
             <!-- Product 6 -->
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="product-card p-3">
+                <div class="product-card p-3" onclick="showProductDetails('silk-scarf')">
                     <div class="product-img-container">
-                        <img src="product6.jpg" alt="Silk Scarf" class="product-img">
+                        <img src="https://placehold.co/600x400/F4976C/white?text=Silk+Scarf" alt="Silk Scarf" class="product-img">
                     </div>
                     <h5 class="product-name">Silk Scarf</h5>
                     <div class="product-price">Nrs. 600</div>
                     <p class="product-description">Luxurious silk scarf with vibrant patterns. Perfect accessory for hair, neck, or handbag.</p>
                     <div class="stock-status">In stock</div>
-                    <button class="buy-btn" onclick="buyProduct('Silk Scarf', 600, 'Luxurious silk scarf with vibrant patterns. Perfect accessory for hair, neck, or handbag.')">
+                    <button class="buy-btn" onclick="event.stopPropagation(); buyProduct('Silk Scarf', 600, 'Luxurious silk scarf with vibrant patterns. Perfect accessory for hair, neck, or handbag.')">
                         <i class="fab fa-whatsapp"></i> Buy Now
                     </button>
                 </div>
@@ -360,10 +443,208 @@
         </a>
     </div>
 
+    <!-- Product Details Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel">Product Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="modalProductImage" src="" alt="" class="modal-product-img">
+                        </div>
+                        <div class="col-md-6">
+                            <h3 id="modalProductName"></h3>
+                            <div class="product-price mb-3" id="modalProductPrice"></div>
+                            <p id="modalProductDescription"></p>
+                            
+                            <div class="product-features mt-4" id="modalProductFeatures">
+                                <!-- Features will be added dynamically -->
+                            </div>
+                            
+                            <div class="quantity-selector mt-4">
+                                <label class="form-label me-3"><strong>Quantity:</strong></label>
+                                <div class="d-flex">
+                                    <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                                    <input type="text" class="quantity-input" id="productQuantity" value="1" readonly>
+                                    <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                                </div>
+                            </div>
+                            
+                            <div class="d-grid gap-2 mt-4">
+                                <button class="btn btn-primary btn-lg" onclick="buyFromModal()">
+                                    <i class="fab fa-whatsapp me-2"></i> Buy Now on WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
+        // Product details data
+        const productDetails = {
+            'hair-clips': {
+                name: 'Hair Clips',
+                price: 49,
+                description: 'Beautiful and durable hair clips that add style to your look. Available in multiple colors.',
+                image: 'https://placehold.co/600x400/FF6B35/white?text=Hair+Clips',
+                features: [
+                    'Durable and long-lasting',
+                    'Available in 6 different colors',
+                    'Perfect for all hair types',
+                    'Easy to use and remove',
+                    'Lightweight and comfortable'
+                ]
+            },
+            'hair-bands': {
+                name: 'Hair Bands',
+                price: 49,
+                description: 'Comfortable and stylish hair bands perfect for any occasion. Stretchy material for perfect fit.',
+                image: 'https://placehold.co/600x400/F4976C/white?text=Hair+Bands',
+                features: [
+                    'Stretchy and comfortable material',
+                    'One size fits all',
+                    'Available in various colors and patterns',
+                    'Perfect for workouts or casual wear',
+                    'Does not pull or damage hair'
+                ]
+            },
+            'rose-lips-oil': {
+                name: 'Rose Lips Oil',
+                price: 299,
+                description: 'Nourishing rose oil for soft and hydrated lips. Natural ingredients, perfect for daily use.',
+                image: 'https://placehold.co/600x400/4ECDC4/white?text=Rose+Lips+Oil',
+                features: [
+                    '100% natural ingredients',
+                    'Hydrates and nourishes lips',
+                    'Reduces dryness and chapping',
+                    'Light rose fragrance',
+                    'Perfect for daily use'
+                ]
+            },
+            'clips-clutcher': {
+                name: 'Clips Clutcher',
+                price: 59,
+                description: 'Versatile hair accessory that holds your hair securely while looking fashionable.',
+                image: 'https://placehold.co/600x400/2A363B/white?text=Clips+Clutcher',
+                features: [
+                    'Strong grip for all hair types',
+                    'Elegant and stylish design',
+                    'Easy to use and remove',
+                    'Durable construction',
+                    'Available in multiple colors'
+                ]
+            },
+            'elegant-earrings': {
+                name: 'Elegant Earrings',
+                price: 450,
+                description: 'Beautifully crafted earrings that add elegance to any outfit. Hypoallergenic materials.',
+                image: 'https://placehold.co/600x400/FF6B35/white?text=Elegant+Earrings',
+                features: [
+                    'Hypoallergenic materials',
+                    'Lightweight and comfortable',
+                    'Elegant design for any occasion',
+                    'High-quality craftsmanship',
+                    'Perfect gift option'
+                ]
+            },
+            'silk-scarf': {
+                name: 'Silk Scarf',
+                price: 600,
+                description: 'Luxurious silk scarf with vibrant patterns. Perfect accessory for hair, neck, or handbag.',
+                image: 'https://placehold.co/600x400/F4976C/white?text=Silk+Scarf',
+                features: [
+                    '100% pure silk material',
+                    'Vibrant and long-lasting colors',
+                    'Multiple styling options',
+                    'Lightweight and breathable',
+                    'Elegant packaging'
+                ]
+            }
+        };
+
+        let currentProduct = null;
+        let currentQuantity = 1;
+
+        // Show product details modal
+        function showProductDetails(productId) {
+            const product = productDetails[productId];
+            if (!product) return;
+            
+            currentProduct = product;
+            currentQuantity = 1;
+            
+            document.getElementById('modalProductName').textContent = product.name;
+            document.getElementById('modalProductPrice').textContent = `Nrs. ${product.price}`;
+            document.getElementById('modalProductDescription').textContent = product.description;
+            document.getElementById('modalProductImage').src = product.image;
+            document.getElementById('productQuantity').value = currentQuantity;
+            
+            // Add features
+            const featuresContainer = document.getElementById('modalProductFeatures');
+            featuresContainer.innerHTML = '';
+            product.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature;
+                featuresContainer.appendChild(li);
+            });
+            
+            // Show modal
+            const productModal = new bootstrap.Modal(document.getElementById('productModal'));
+            productModal.show();
+        }
+
+        // Quantity functions
+        function increaseQuantity() {
+            if (currentQuantity < 10) {
+                currentQuantity++;
+                document.getElementById('productQuantity').value = currentQuantity;
+            }
+        }
+
+        function decreaseQuantity() {
+            if (currentQuantity > 1) {
+                currentQuantity--;
+                document.getElementById('productQuantity').value = currentQuantity;
+            }
+        }
+
+        // Buy from modal
+        function buyFromModal() {
+            if (!currentProduct) return;
+            
+            const totalPrice = currentProduct.price * currentQuantity;
+            const message = `Hello! I'm interested in purchasing the following product:
+            
+Product: ${currentProduct.name}
+Quantity: ${currentQuantity}
+Price: Nrs. ${totalPrice}
+Description: ${currentProduct.description}
+
+Can you provide more details and help me with the purchase?`;
+            
+            const phoneNumber = '9779860934654';
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+            
+            // Close modal
+            const productModal = bootstrap.Modal.getInstance(document.getElementById('productModal'));
+            productModal.hide();
+            
+            // Show confirmation
+            showNotification(`${currentProduct.name} order initiated!`);
+        }
+
+        // Original buy product function
         function buyProduct(productName, price, description) {
             const message = `Hello! I'm interested in purchasing the following product:
             
@@ -376,6 +657,33 @@ Can you provide more details and help me with the purchase?`;
             const phoneNumber = '9779860934654';
             const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
+            
+            showNotification(`${productName} order initiated!`);
+        }
+        
+        // Show notification
+        function showNotification(message) {
+            // Create toast notification
+            const toast = document.createElement('div');
+            toast.className = 'toast align-items-center text-white bg-success border-0';
+            toast.setAttribute('role', 'alert');
+            toast.innerHTML = `
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <i class="fas fa-check-circle me-2"></i> ${message}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+            `;
+            
+            document.body.appendChild(toast);
+            const bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
+            
+            // Remove toast after it's hidden
+            toast.addEventListener('hidden.bs.toast', () => {
+                document.body.removeChild(toast);
+            });
         }
     </script>
 </body>
