@@ -3,47 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxista Store - Your One-Stop Shop</title>
+    <title>Luxista Store - Premium Boutique</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #ff6b35;
-            --secondary-color: #f4976c;
-            --accent-color: #4ecdc4;
-            --dark-color: #2a363b;
+            --primary-pink: #ff66b2;
+            --baby-pink: #ffcce6;
+            --light-pink: #ffe6f2;
+            --dusty-pink: #f2a6b8;
+            --rose-gold: #e0a899;
+            --dark-pink: #d44d80;
+            --soft-white: #fff9fb;
+            --gold-accent: #e6c87a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--soft-white);
+            color: #5a3d3d;
             min-height: 100vh;
             padding-bottom: 100px;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffcce6' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
         
         .header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--dusty-pink) 100%);
             color: white;
             padding: 2rem 0;
             margin-bottom: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 25px rgba(214, 77, 128, 0.3);
+            border-radius: 0 0 30px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
         
         .header h1 {
-            font-family: 'Brush Script MT', cursive;
-            font-size: 3rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            letter-spacing: 2px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header .lead {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-ribbon {
+            position: absolute;
+            top: 0;
+            right: 20px;
+            background-color: var(--gold-accent);
+            color: #5a3d3d;
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            border-radius: 0 0 10px 10px;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            z-index: 3;
         }
         
         .product-card {
-            transition: all 0.3s ease;
-            border-radius: 15px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(255, 102, 178, 0.1);
             background: white;
             margin-bottom: 2rem;
             position: relative;
@@ -51,106 +101,143 @@
             display: flex;
             flex-direction: column;
             cursor: pointer;
+            border: 1px solid var(--baby-pink);
         }
         
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 102, 178, 0.25);
         }
         
         .product-img-container {
             width: 100%;
             overflow: hidden;
             position: relative;
-            border-bottom: 3px solid var(--accent-color);
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: linear-gradient(135deg, var(--light-pink) 0%, #fff 100%);
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 15px;
+            min-height: 280px;
         }
         
+        /* Mobile-first image sizing */
         .product-img {
             width: 100%;
             height: auto;
-            transition: transform 0.3s ease;
+            max-height: 250px;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+            border-radius: 12px;
         }
         
         /* Responsive image heights */
         @media (min-width: 992px) {
+            .product-img-container {
+                min-height: 300px;
+            }
             .product-img {
-                height: 250px;
+                max-height: 270px;
             }
         }
         
         @media (max-width: 991px) and (min-width: 576px) {
+            .product-img-container {
+                min-height: 260px;
+            }
             .product-img {
-                height: 220px;
+                max-height: 230px;
             }
         }
         
         @media (max-width: 575px) {
+            .product-img-container {
+                min-height: 220px;
+                padding: 10px;
+            }
             .product-img {
-                height: 200px;
+                max-height: 200px;
             }
         }
         
         .product-card:hover .product-img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
         
         .product-name {
             font-weight: 600;
-            color: var(--dark-color);
-            font-size: 1.2rem;
+            color: #5a3d3d;
+            font-size: 1.3rem;
             margin: 1rem 0 0.5rem;
+            padding: 0 15px;
         }
         
         .product-price {
-            color: var(--primary-color);
+            color: var(--primary-pink);
             font-weight: 700;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .product-price::before {
+            content: "Nrs.";
+            font-size: 1rem;
+            margin-right: 5px;
+            color: var(--dusty-pink);
         }
         
         .product-description {
-            color: #666;
-            font-size: 0.9rem;
+            color: #8a6a6a;
+            font-size: 0.95rem;
             margin-bottom: 1rem;
             flex-grow: 1;
+            padding: 0 15px;
+            line-height: 1.5;
         }
         
         .stock-status {
             position: absolute;
             top: 15px;
             right: 15px;
-            background-color: var(--accent-color);
+            background-color: var(--rose-gold);
             color: white;
-            padding: 5px 10px;
+            padding: 5px 12px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            z-index: 2;
         }
         
         .buy-btn {
-            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            background: linear-gradient(45deg, var(--primary-pink), var(--dark-pink));
             border: none;
             color: white;
-            padding: 12px 25px;
-            border-radius: 25px;
+            padding: 14px 25px;
+            border-radius: 30px;
             transition: all 0.3s ease;
             font-weight: 600;
             margin-top: auto;
-            width: 100%;
+            width: calc(100% - 30px);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
+            margin: 15px;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 5px 15px rgba(255, 102, 178, 0.3);
         }
         
         .buy-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+            box-shadow: 0 8px 20px rgba(255, 102, 178, 0.5);
             color: white;
+            background: linear-gradient(45deg, var(--dark-pink), var(--primary-pink));
         }
         
         .social-section {
@@ -161,22 +248,22 @@
         }
         
         .social-btn {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 5px 0;
+            margin: 8px 0;
             transition: all 0.3s ease;
             border: none;
             color: white;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-size: 1.3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         .social-btn:hover {
-            transform: scale(1.1);
+            transform: scale(1.15) translateX(-5px);
         }
         
         .instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
@@ -186,41 +273,70 @@
         .whatsapp { background: linear-gradient(45deg, #25d366, #128c7e); }
         
         .footer {
-            background: white;
-            padding: 2rem 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-top: 2rem;
+            background: linear-gradient(135deg, var(--baby-pink) 0%, white 100%);
+            padding: 2.5rem 0;
+            border-radius: 30px 30px 0 0;
+            box-shadow: 0 -5px 25px rgba(255, 102, 178, 0.1);
+            margin-top: 3rem;
+            border-top: 3px solid var(--primary-pink);
         }
         
         .footer h5 {
-            color: var(--dark-color);
-            margin-bottom: 1rem;
+            color: var(--dark-pink);
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--rose-gold);
+            border-radius: 2px;
         }
         
         .footer p {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            color: #5a3d3d;
+        }
+        
+        .footer i {
+            color: var(--primary-pink);
+            width: 20px;
+            margin-right: 10px;
         }
         
         .footer a {
-            color: var(--primary-color);
+            color: var(--dark-pink);
             text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
         }
         
         .footer a:hover {
+            color: var(--primary-pink);
             text-decoration: underline;
+            padding-left: 5px;
         }
         
         .product-badge {
             position: absolute;
             top: 15px;
             left: 15px;
-            background-color: var(--primary-color);
+            background: linear-gradient(45deg, var(--primary-pink), var(--rose-gold));
             color: white;
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            z-index: 2;
         }
         
         .toast {
@@ -228,12 +344,17 @@
             top: 20px;
             right: 20px;
             z-index: 1055;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(255, 102, 178, 0.3);
         }
         
         .modal-product-img {
             width: 100%;
-            border-radius: 10px;
+            border-radius: 15px;
             margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 1px solid var(--baby-pink);
         }
         
         .product-features {
@@ -242,68 +363,190 @@
         }
         
         .product-features li {
-            margin-bottom: 8px;
-            padding-left: 25px;
+            margin-bottom: 10px;
+            padding-left: 30px;
             position: relative;
+            color: #5a3d3d;
         }
         
         .product-features li:before {
             content: "✓";
             position: absolute;
             left: 0;
-            color: var(--accent-color);
+            color: var(--primary-pink);
             font-weight: bold;
+            font-size: 1.2rem;
         }
         
         .quantity-selector {
             display: flex;
             align-items: center;
-            margin: 15px 0;
+            margin: 20px 0;
         }
         
         .quantity-btn {
-            width: 40px;
-            height: 40px;
-            border: 1px solid #ddd;
+            width: 45px;
+            height: 45px;
+            border: 2px solid var(--baby-pink);
             background: white;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             font-size: 1.2rem;
+            color: var(--primary-pink);
+            border-radius: 10px;
+            transition: all 0.2s ease;
+        }
+        
+        .quantity-btn:hover {
+            background-color: var(--light-pink);
         }
         
         .quantity-input {
-            width: 60px;
-            height: 40px;
+            width: 70px;
+            height: 45px;
             text-align: center;
-            border: 1px solid #ddd;
+            border: 2px solid var(--baby-pink);
             border-left: none;
             border-right: none;
+            font-weight: 600;
+            color: var(--dark-pink);
+            background-color: var(--soft-white);
+        }
+        
+        .modal-content {
+            border-radius: 25px;
+            border: none;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(255, 102, 178, 0.2);
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--dusty-pink) 100%);
+            color: white;
+            border-bottom: none;
+            padding: 1.5rem 2rem;
+        }
+        
+        .modal-title {
+            font-weight: 700;
+        }
+        
+        .btn-close {
+            filter: brightness(0) invert(1);
+            opacity: 0.8;
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        .premium-tag {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background-color: var(--gold-accent);
+            color: #5a3d3d;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(230, 200, 122, 0.3);
+            z-index: 3;
+        }
+        
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .heart {
+            position: absolute;
+            color: rgba(255, 102, 178, 0.1);
+            font-size: 1.5rem;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .header .lead {
+                font-size: 1rem;
+            }
+            
+            .social-section {
+                bottom: 10px;
+                right: 10px;
+            }
+            
+            .social-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header {
+                padding: 1.5rem 0;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .product-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .footer {
+                padding: 1.5rem 0;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header text-center">
+        <div class="header-ribbon">Free Delivery in Birtamode</div>
         <div class="container">
+            <div class="floating-hearts">
+                <div class="heart" style="top: 10%; left: 10%;"><i class="fas fa-heart"></i></div>
+                <div class="heart" style="top: 20%; right: 15%;"><i class="fas fa-heart"></i></div>
+                <div class="heart" style="bottom: 30%; left: 15%;"><i class="fas fa-heart"></i></div>
+            </div>
             <h1>🛍️ Luxista Store</h1>
-            <p class="lead">Your one-stop shop for amazing products!</p>
+            <p class="lead">Your premium destination for beautiful accessories & self-care</p>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="container">
+        <div class="premium-tag">✨ PREMIUM COLLECTION ✨</div>
         <div class="row">
             <!-- Product 1 -->
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="product-card p-3" onclick="showProductDetails('hair-clips')">
                     <div class="product-img-container">
-                        <img src="product1.jpg" alt="Hair Clips" class="product-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0jOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zNWVtIj5IYWlyIENsaXBzPC90ZXh0Pjwvc3ZnPg=='">
+                        <img src="product1.jpg" alt="Hair Clips" class="product-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmZkN2VlIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJQb3BwaW5zLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmaWxsPSJkNDRkODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjM1ZW0iPkhhaXIgQ2xpcHM8L3RleHQ+PC9zdmc+'">
                     </div>
                     <div class="product-badge">BESTSELLER</div>
                     <h5 class="product-name">Hair Clips</h5>
-                    <div class="product-price">Nrs. 49</div>
+                    <div class="product-price">49</div>
                     <p class="product-description">Beautiful and durable hair clips that add style to your look. Available in multiple colors.</p>
                     <div class="stock-status">In stock</div>
                     <button class="buy-btn" onclick="event.stopPropagation(); buyProduct('Hair Clips', 49, 'Beautiful and durable hair clips that add style to your look. Available in multiple colors.')">
@@ -316,10 +559,10 @@
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="product-card p-3" onclick="showProductDetails('hair-bands')">
                     <div class="product-img-container">
-                        <img src="product2.jpg" alt="Hair Bands" class="product-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0jOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zNWVtIj5IYWlyIEJhbmRzPC90ZXh0Pjwvc3ZnPg=='">
+                        <img src="product2.jpg" alt="Hair Bands" class="product-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmZkN2VlIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJQb3BwaW5zLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmaWxsPSJkNDRkODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjM1ZW0iPkhhaXIgQmFuZHM8L3RleHQ+PC9zdmc+'">
                     </div>
                     <h5 class="product-name">Hair Bands</h5>
-                    <div class="product-price">Nrs. 49</div>
+                    <div class="product-price">49</div>
                     <p class="product-description">Comfortable and stylish hair bands perfect for any occasion. Stretchy material for perfect fit.</p>
                     <div class="stock-status">In stock</div>
                     <button class="buy-btn" onclick="event.stopPropagation(); buyProduct('Hair Bands', 49, 'Comfortable and stylish hair bands perfect for any occasion. Stretchy material for perfect fit.')">
@@ -332,11 +575,11 @@
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="product-card p-3" onclick="showProductDetails('rose-lips-oil')">
                     <div class="product-img-container">
-                        <img src="product3.jpg" alt="Rose Lips Oil" class="product-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0jOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zNWVtIj5Sb3NlIExpcHMgT2lsPC90ZXh0Pjwvc3ZnPg=='">
+                        <img src="product3.jpg" alt="Rose Lips Oil" class="product-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmZkN2VlIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJQb3BwaW5zLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmaWxsPSJkNDRkODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjM1ZW0iPlJvc2UgTGlwcyBPaWw8L3RleHQ+PC9zdmc+'">
                     </div>
                     <div class="product-badge">NEW</div>
                     <h5 class="product-name">Rose Lips Oil</h5>
-                    <div class="product-price">Nrs. 299</div>
+                    <div class="product-price">299</div>
                     <p class="product-description">Nourishing rose oil for soft and hydrated lips. Natural ingredients, perfect for daily use.</p>
                     <div class="stock-status">In stock</div>
                     <button class="buy-btn" onclick="event.stopPropagation(); buyProduct('Rose Lips Oil', 299, 'Nourishing rose oil for soft and hydrated lips. Natural ingredients, perfect for daily use.')">
@@ -349,10 +592,10 @@
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="product-card p-3" onclick="showProductDetails('clips-clutcher')">
                     <div class="product-img-container">
-                        <img src="product4.jpg" alt="Clips Clutcher" class="product-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0jOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zNWVtIj5DbGlwcyBDbHV0Y2hlcjwvdGV4dD48L3N2Zz4='">
+                        <img src="product4.jpg" alt="Clips Clutcher" class="product-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmZkN2VlIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJQb3BwaW5zLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmaWxsPSJkNDRkODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjM1ZW0iPkNsaXBzIENsdXRjaGVyPC90ZXh0Pjwvc3ZnPg=='">
                     </div>
                     <h5 class="product-name">Clips Clutcher</h5>
-                    <div class="product-price">Nrs. 59</div>
+                    <div class="product-price">59</div>
                     <p class="product-description">Versatile hair accessory that holds your hair securely while looking fashionable.</p>
                     <div class="stock-status">In stock</div>
                     <button class="buy-btn" onclick="event.stopPropagation(); buyProduct('Clips Clutcher', 59, 'Versatile hair accessory that holds your hair securely while looking fashionable.')">
@@ -365,11 +608,11 @@
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="product-card p-3" onclick="showProductDetails('elegant-earrings')">
                     <div class="product-img-container">
-                        <img src="product5.jpg" alt="Elegant Earrings" class="product-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0jOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zNWVtIj5FYXJyaW5nczwvdGV4dD48L3N2Zz4='">
+                        <img src="product5.jpg" alt="Elegant Earrings" class="product-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmZkN2VlIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJQb3BwaW5zLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmaWxsPSJkNDRkODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjM1ZW0iPkVhcnJpbmdzPC90ZXh0Pjwvc3ZnPg=='">
                     </div>
                     <div class="product-badge">POPULAR</div>
                     <h5 class="product-name">Elegant Earrings</h5>
-                    <div class="product-price">Nrs. 450</div>
+                    <div class="product-price">450</div>
                     <p class="product-description">Beautifully crafted earrings that add elegance to any outfit. Hypoallergenic materials.</p>
                     <div class="stock-status">In stock</div>
                     <button class="buy-btn" onclick="event.stopPropagation(); buyProduct('Elegant Earrings', 450, 'Beautifully crafted earrings that add elegance to any outfit. Hypoallergenic materials.')">
@@ -382,10 +625,10 @@
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="product-card p-3" onclick="showProductDetails('silk-scarf')">
                     <div class="product-img-container">
-                        <img src="product6.jpg" alt="Silk Scarf" class="product-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0jOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zNWVtIj5TY2FyZjwvdGV4dD48L3N2Zz4='">
+                        <img src="product6.jpg" alt="Silk Scarf" class="product-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmZkN2VlIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJQb3BwaW5zLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmaWxsPSJkNDRkODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjM1ZW0iPlNpbGsgU2NhcmY8L3RleHQ+PC9zdmc+'">
                     </div>
                     <h5 class="product-name">Silk Scarf</h5>
-                    <div class="product-price">Nrs. 600</div>
+                    <div class="product-price">600</div>
                     <p class="product-description">Luxurious silk scarf with vibrant patterns. Perfect accessory for hair, neck, or handbag.</p>
                     <div class="stock-status">In stock</div>
                     <button class="buy-btn" onclick="event.stopPropagation(); buyProduct('Silk Scarf', 600, 'Luxurious silk scarf with vibrant patterns. Perfect accessory for hair, neck, or handbag.')">
@@ -402,23 +645,24 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <h5>About Luxista Store</h5>
-                    <p>Your one-stop shop for quality products at affordable prices. We're committed to bringing you the best shopping experience.</p>
+                    <p>Your premium destination for quality accessories and self-care products. We're committed to bringing you the best shopping experience with elegance and style.</p>
                 </div>
                 <div class="col-md-4 mb-4">
                     <h5>Contact Information</h5>
                     <p><i class="fas fa-phone"></i> Phone: +977 9860934654</p>
                     <p><i class="fas fa-envelope"></i> Email: info@luxistastore.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Location: Jhapa, Nepal</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Location: Birtamode, Jhapa, Nepal</p>
+                    <p><i class="fas fa-truck"></i> Free Delivery in Birtamode City</p>
                 </div>
                 <div class="col-md-4 mb-4">
                     <h5>Quick Links</h5>
-                    <p><a href="#">Home</a></p>
-                    <p><a href="#">Products</a></p>
-                    <p><a href="#">About Us</a></p>
-                    <p><a href="#">Contact</a></p>
+                    <p><a href="#"><i class="fas fa-chevron-right"></i> Home</a></p>
+                    <p><a href="#"><i class="fas fa-chevron-right"></i> Products</a></p>
+                    <p><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></p>
+                    <p><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></p>
                 </div>
             </div>
-            <div class="text-center mt-4">
+            <div class="text-center mt-4 pt-3 border-top border-light">
                 <p>&copy; 2025 Luxista Store. All rights reserved.</p>
             </div>
         </div>
@@ -475,7 +719,7 @@
                             </div>
                             
                             <div class="d-grid gap-2 mt-4">
-                                <button class="btn btn-primary btn-lg" onclick="buyFromModal()">
+                                <button class="btn btn-lg buy-btn" onclick="buyFromModal()">
                                     <i class="fab fa-whatsapp me-2"></i> Buy Now on WhatsApp
                                 </button>
                             </div>
@@ -502,7 +746,8 @@
                     'Available in 6 different colors',
                     'Perfect for all hair types',
                     'Easy to use and remove',
-                    'Lightweight and comfortable'
+                    'Lightweight and comfortable',
+                    'Premium quality materials'
                 ]
             },
             'hair-bands': {
@@ -515,7 +760,8 @@
                     'One size fits all',
                     'Available in various colors and patterns',
                     'Perfect for workouts or casual wear',
-                    'Does not pull or damage hair'
+                    'Does not pull or damage hair',
+                    'Easy to clean and maintain'
                 ]
             },
             'rose-lips-oil': {
@@ -528,7 +774,8 @@
                     'Hydrates and nourishes lips',
                     'Reduces dryness and chapping',
                     'Light rose fragrance',
-                    'Perfect for daily use'
+                    'Perfect for daily use',
+                    'Compact and travel-friendly'
                 ]
             },
             'clips-clutcher': {
@@ -541,7 +788,8 @@
                     'Elegant and stylish design',
                     'Easy to use and remove',
                     'Durable construction',
-                    'Available in multiple colors'
+                    'Available in multiple colors',
+                    'Perfect for up-dos and half-up styles'
                 ]
             },
             'elegant-earrings': {
@@ -554,7 +802,8 @@
                     'Lightweight and comfortable',
                     'Elegant design for any occasion',
                     'High-quality craftsmanship',
-                    'Perfect gift option'
+                    'Perfect gift option',
+                    'Comes in a beautiful gift box'
                 ]
             },
             'silk-scarf': {
@@ -567,7 +816,8 @@
                     'Vibrant and long-lasting colors',
                     'Multiple styling options',
                     'Lightweight and breathable',
-                    'Elegant packaging'
+                    'Elegant packaging',
+                    'Handcrafted with care'
                 ]
             }
         };
@@ -584,7 +834,7 @@
             currentQuantity = 1;
             
             document.getElementById('modalProductName').textContent = product.name;
-            document.getElementById('modalProductPrice').textContent = `Nrs. ${product.price}`;
+            document.getElementById('modalProductPrice').innerHTML = `<span>${product.price}</span>`;
             document.getElementById('modalProductDescription').textContent = product.description;
             document.getElementById('modalProductImage').src = product.image;
             document.getElementById('productQuantity').value = currentQuantity;
@@ -665,8 +915,9 @@ Can you provide more details and help me with the purchase?`;
         function showNotification(message) {
             // Create toast notification
             const toast = document.createElement('div');
-            toast.className = 'toast align-items-center text-white bg-success border-0';
+            toast.className = 'toast align-items-center text-white border-0';
             toast.setAttribute('role', 'alert');
+            toast.style.backgroundColor = 'var(--primary-pink)';
             toast.innerHTML = `
                 <div class="d-flex">
                     <div class="toast-body">
@@ -685,6 +936,23 @@ Can you provide more details and help me with the purchase?`;
                 document.body.removeChild(toast);
             });
         }
+        
+        // Add floating hearts animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const heartsContainer = document.querySelector('.floating-hearts');
+            if (heartsContainer) {
+                for (let i = 0; i < 8; i++) {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = '<i class="fas fa-heart"></i>';
+                    heart.style.left = `${Math.random() * 100}%`;
+                    heart.style.top = `${Math.random() * 100}%`;
+                    heart.style.animationDelay = `${Math.random() * 3}s`;
+                    heart.style.fontSize = `${Math.random() * 1 + 1}rem`;
+                    heartsContainer.appendChild(heart);
+                }
+            }
+        });
     </script>
 </body>
 </html>
